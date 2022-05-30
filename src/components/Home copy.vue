@@ -4,14 +4,13 @@
       <v-main class="grey lighten-3">
         <v-container>
           <h1>Music Media 2.0</h1>
-          <h2 class="mt-5" v-if="artists.length > 0">Top Artist</h2>
+          <h2 class="mt-5">Top Artist</h2>
 
           <v-row>
             <v-col
               lg="2"
               md="4"
               sm="6"
-              cols="12"
               v-for="(artist, index) in artists"
               :key="index"
             >
@@ -28,10 +27,8 @@
           </v-row>
 
           <v-row>
-            <v-col v-if="songs.length > 0">
-              <h2 class="mt-5">
-                {{ artist_name }} <sup class="close" @click="close">+</sup>
-              </h2>
+            <v-col v-if="artist_name != ''">
+              <h2 class="mt-5">{{ artist_name }}</h2>
 
               <v-data-table
                 :headers="headers"
@@ -50,6 +47,33 @@
           </v-row>
         </v-container>
       </v-main>
+
+      <!-- <div class="mt-5" v-if="songs != songs.lenght > 0">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Artist Name</th>
+                    <th scope="col">Album Name</th>
+                    <th scope="col">Year Released</th>
+                    <th scope="col">Song Track #</th>
+                    <th scope="col">Song Name</th>
+                  </tr>
+                </thead>
+                <tr v-for="(song, index) in songs" :key="index">
+                  <td>{{ song.artist_name }}</td>
+                  <td>{{ song.album_name }}</td>
+                  <td>{{ song.year_released }}</td>
+                  <td>{{ song.track }}</td>
+                  <td>{{ song.name }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </v-app>
   </div>
 </template>
@@ -86,18 +110,8 @@ export default {
       let data = { artistId, artistName };
       this.$store.dispatch("getAlbums", data);
     },
-    close() {
-      this.$store.dispatch("clearSongs");
-    },
   },
 };
 </script>
 
-<style>
-.close {
-  display: inline-block;
-  color: red;
-  transform: rotate(45deg);
-  cursor: pointer;
-}
-</style>
+<style></style>
