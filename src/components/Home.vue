@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <v-app id="inspire">
       <v-main class="grey lighten-3">
         <v-container>
@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Home",
   data: () => ({
     artist_name: "",
     page: 1,
